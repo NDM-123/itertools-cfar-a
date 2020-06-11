@@ -1,7 +1,10 @@
 
 
+
 #pragma once
 #include "range.hpp"
+#include <functional>
+
 namespace itertools{
 
 template <typename T>
@@ -18,10 +21,17 @@ std::vector<T> a;
 return a;
 }
 
-template <typename T,typename Functor>
-std::vector<T> filterfalse(Functor &lambda,std::vector<T>){
+template <typename Proc,typename T>
+std::vector<T> filterfalse(Proc p,std::vector<T>){
 
 std::vector<T> a;
 return a;
 }
+
+//template <typename Functor,typename Proc,typename T>
+//std::vector<T> filterfalse(Functor &func,Proc p){
+
+//std::vector<T> a;
+///return a;
+//}
 }
