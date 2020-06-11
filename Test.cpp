@@ -15,7 +15,7 @@ using namespace std;
 
 TEST_CASE("range"){
     int j = 0;
-	for(int ch=0;ch<101;ch++){
+	for(int ch=0;ch<150;ch++){
     for(auto i : range(0,20)){
         CHECK(i == j++);
 	}
