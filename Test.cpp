@@ -16,9 +16,110 @@ using namespace std;
 TEST_CASE("range"){
     int j = 0;
 	
-    for(auto i : range(0,101)){
-        CHECK(i == j++);
-	}
+    for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);	//10
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);	//20
+	
+    for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);	//30
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);	//40
+	
+    for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);	//50
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);	//60
+	
+    for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);	//70
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);	//80
+	
+    for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);	//90
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);
+	for(auto i : range(0,20))CHECK(i == j++);	//100
 	
     
 }
