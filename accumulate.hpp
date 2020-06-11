@@ -16,8 +16,8 @@ std::vector<T> a;
 return a;
 }
 
-template <typename T,typename Functor>
-std::vector<T> accumulate(std::vector<T>,Functor &lambda){
+template <typename T,typename Proc>
+std::vector<T> accumulate(std::vector<T>,Proc p){
 
 std::vector<T> a;
 return a;
