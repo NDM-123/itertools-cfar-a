@@ -1,6 +1,7 @@
 #include "doctest.h"
 #include <iostream>
 #include <stdexcept>
+#include "range.hpp"
 
 #include <cassert>
 
