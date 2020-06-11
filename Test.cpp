@@ -1,8 +1,16 @@
 #include "doctest.h"
 #include <iostream>
 #include <stdexcept>
-#include "range.hpp"
+#include <vector>
 
+#include "range.hpp"
+#include "accumulate.hpp"
+#include "filterfalse.hpp"
+#include "compress.hpp"
+
+
+using namespace itertools;
+using namespace std;
 #include <cassert>
 
 TEST_CASE("range"){
