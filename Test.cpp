@@ -1,125 +1,46 @@
-#include "doctest.h"
+//
+//  Demo for itertools exercise.
+//
+//  Version 1 by Adam Lev-Ari on 02/2020. Copyright © 2020 Adam Lev-Ari. All rights reserved.
+//  Version 2 by Erel Segal-Halevi on 06/2020.
+//
+
 #include <iostream>
-#include <stdexcept>
 #include <vector>
 
 #include "range.hpp"
 #include "accumulate.hpp"
 #include "filterfalse.hpp"
 #include "compress.hpp"
+#include "doctest.h"
 
 
-using namespace itertools;
 using namespace std;
-#include <cassert>
+using namespace itertools;
 
-TEST_CASE("range"){
-    int j = 0;
-	
-    for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);	//10
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);	//20
-	
-    for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);	//30
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);	//40
-	
-    for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);	//50
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);	//60
-	
-    for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);	//70
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);	//80
-	
-    for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);	//90
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);
-	for(auto i : range(0,20))CHECK(i == j++);	//100
-	
-    
+
+TEST_CASE("check addFather")
+{
+vector<int> vecint = {5 ,6 ,7, 8};
+	for (int i: itertools::range(5,9)){
+
+    CHECK(i==vecint[i]);
+}
+ vecint = {0 ,1 ,2, 3};
+	for (int i: itertools::range(0,4)){
+
+    CHECK(i==vecint[i]);
+}
+vecint = {105 ,106 ,107, 108};
+	for (int i: itertools::range(105,109)){
+
+    CHECK(i==vecint[i]);
+}
+}
+
+TEST_CASE("check addFather"){
+vector<int> vecint = {5 ,11, 18, 26};
+
+for (int i: itertools::accumulate(itertools::range(5,9))){
+    CHECK(i==vecint[i]);}
 }
