@@ -1,37 +1,61 @@
-
-
-
 #pragma once
-#include "range.hpp"
-#include <functional>
+#ifndef ITERTOOLS_CFAR_A_MASTER_FILTERFALSE_HPP
+#define ITERTOOLS_CFAR_A_MASTER_FILTERFALSE_HPP
+#include <iostream>
+#include <vector>
 
+using namespace std;
 namespace itertools{
 
-template <typename T>
-std::vector<T> filterfalse(T begin,T end){
+template  <typename Func,typename T>
+class filterfalse{
+    public:
+       
+ class iterator{
+        public:
+            typename T::iterator iter;  //Data Member
+            Func function;
 
-std::vector<T> a;
-return a;
+
+            explicit iterator(typename T::iterator _iter,Func func):iter(_iter),function(func) {}
+      bool operator !=(const iterator& other){
+                while (other.iter != iter){
+                    if(!function(*iter)){
+                        return other.iter != iter;
+                    }
+                    else{
+                        ++iter;
+                }                }
+                return false;
+            }
+
+    auto operator *(){
+
+                return *iter;
+            }
+
+            iterator& operator ++() {
+                ++iter;
+                return *this;
+            }
+
+        };
+ T _container;
+        Func function;//Creating new function
+
+        filterfalse(Func func,T cont):function(func),_container(cont){}
+
+            iterator begin(){
+                return iterator(_container.begin(),function);
+
+            }
+
+            iterator end(){
+                return iterator(_container.end(),function);
+
+            }
+
+
+    };
 }
-
-template <typename T>
-std::vector<T> filterfalse(std::vector<T>){
-
-std::vector<T> a;
-return a;
-}
-
-template <typename Proc,typename T>
-std::vector<T> filterfalse(Proc p,std::vector<T>){
-
-std::vector<T> a;
-return a;
-}
-
-//template <typename Functor,typename Proc,typename T>
-//std::vector<T> filterfalse(Functor &func,Proc p){
-
-//std::vector<T> a;
-///return a;
-//}
-}
+#endif
