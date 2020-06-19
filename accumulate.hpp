@@ -1,76 +1,77 @@
 #ifndef ITERTOOLS_CFAR_A_MASTER_ACCUMULATE_HPP
 #define ITERTOOLS_CFAR_A_MASTER_ACCUMULATE_HPP
-
-#pragma once
 #include <iostream>
 #include <vector>
-
 using namespace std;
-namespace itertools{
 
-typedef struct{		//plus function
+namespace itertools
+{
+    typedef struct
+    {
         template <typename T>
-        T operator ()(T a, T b) const{
-            return a+b;
+        T operator()(T f1, T f2) const
+        {
+            return f1 + f2;
         }
-    } plus;
+    } add;
 
+    template <typename T, typename _operator = add>
+    class accumulate
+    {
+    public:
+        T _container;
+        _operator operat;
 
-template  <typename T,typename Func = plus>
-class accumulate{
-public:
-    T _container;		//data structure
-     Func function;		//lambda function
+        accumulate(T vec, _operator operat1 = add()) : _container(vec), operat(operat1) {}
 
+        class iterator
+        {
+        public:
+            typename T::iterator iter;
+            decltype(*(_container.begin())) sum;
+            int counter;
+            _operator operat;
 
-	//Init List
-    accumulate(T container,Func func=plus()):_container(container),function(func){}
+            iterator(typename T::iterator first, _operator operat1)
+                : iter(first), sum(*iter), counter(0), operat(operat1) {}
 
-class iterator{
-public:
+            //-------------------------------------------------operators-------------------------------------------------
+            bool operator!=(const iterator &other)
+            {
+                return other.iter != iter;
+            }
 
-    typename T::iterator iter;  
-    decltype(*(_container.begin())) _data;
-    int count;
-    Func function;
+            // bool operator==(const iterator &other)
+            // {
+            //     return this == other.iter;
+            // }
 
-	//init list
-    explicit iterator(typename T::iterator _iter,Func func):iter(_iter),_data(*iter),count(0),function(func) {}    
+            auto operator*()
+            {
+                if (counter == 0) // means its the first item
+                {
+                    counter++;
+                    return *iter;
+                }
+                sum = operat(sum, *iter);
+                return sum;
+            }
 
-    bool operator !=(const iterator& other){	//different than end
-        return other.iter != iter;
-    }
+            iterator &operator++()
+            {
+                ++iter;
+                return *this;
+            }
+        };
 
-    auto operator *(){		//derefrencing the value
-
-
-        if(count ==0) {		//for the first value
-            count++;
-            return *iter;
+        iterator begin()
+        {
+            return iterator(_container.begin(), operat);
         }
-
-        _data = function(_data , *iter);
-        return _data;
-
-    }
-
-    iterator& operator ++() {		//moving iterator
-        ++iter;
-        return *this;
-    }
-
-};
-
-	//retrieve begin and end values for the iterator
-    iterator begin(){return iterator(_container.begin(),function);
-    }
-
-    iterator end(){return iterator(_container.end(),function);
-    }
-
-
-
-};
-
+        iterator end()
+        {
+            return iterator(_container.end(), operat);
+        }
+    };
 }
 #endif
