@@ -5,31 +5,36 @@
 #include <iterator>
 
 namespace itertools {
-    template <typename VAC1, typename VAC2>
+    template <typename container1, typename container2>
     class compress {
-        VAC1 data;
-        VAC2 bool_data;
-    public:
-        explicit compress(VAC1 x1, VAC2 x2) : data(x1), bool_data(x2) {}
+        container1 data;	//data structures
+        container2 bool_data;
+    public:	
+		//init list
+        explicit compress(container1 x1, container2 x2) : data(x1), bool_data(x2) {}
         class iterator{
-            typename VAC1::iterator _iter;
-            typename VAC1::iterator _it_end;
-            typename VAC2::iterator _bool_it;
+            typename container1::iterator _iter;
+            typename container1::iterator _it_end;
+            typename container2::iterator _bool_it;
         public:
-            explicit iterator(typename VAC1::iterator it, typename VAC1::iterator end, typename VAC2::iterator _bool)
+		//init list
+            explicit iterator(typename container1::iterator it, typename container1::iterator end, typename container2::iterator _bool)
                     : _iter(it), _it_end(end), _bool_it(_bool) {
                 while (_iter != _it_end && !(*_bool_it)) {
                     ++_iter;
                     ++_bool_it;
                 }
             };
+		//default constructor
             iterator(const iterator& other) = default;
+		//changing values in iterator
             iterator& operator=(const iterator& other) {
                 if (&other != this){
                     iterator(other._iter,other._it_end,other._it_func);
                 }
                 return *this;
             }
+		//forward iterator
             iterator& operator++(){
                 ++_iter;
                 while (_iter != _it_end && !(*_bool_it)) {
@@ -37,23 +42,26 @@ namespace itertools {
                 }
                 return *this;
             }
+		//forwarding the value of an iterator
             iterator operator++(int){
                 iterator temp = *this;
                 ++(*this);
                 return temp;
             }
+		//checking equality in iterator
             bool operator==(const iterator& other) {
                 return (_iter == other._iter);
             }
+		//checking equality in iterator
             bool operator!=(const iterator& other) {
                 return (_iter != other._iter);
             }
-
+		//derefrencing for value
             auto operator*(){
                 return *_iter;
             }
         };
-
+	//retrieve begin and end for iterator
         iterator begin(){
             return iterator(data.begin(), data.end(), bool_data.begin());
         }

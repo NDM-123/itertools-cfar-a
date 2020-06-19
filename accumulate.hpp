@@ -8,7 +8,7 @@
 using namespace std;
 namespace itertools{
 
-typedef struct{
+typedef struct{		//plus function
         template <typename T>
         T operator ()(T a, T b) const{
             return a+b;
@@ -19,35 +19,32 @@ typedef struct{
 template  <typename T,typename Func = plus>
 class accumulate{
 public:
-    T _container;
-     Func function;//Creating new function
+    T _container;		//data structure
+     Func function;		//lambda function
 
 
+	//Init List
+    accumulate(T container,Func func=plus()):_container(container),function(func){}
 
-    accumulate(T container,Func func=plus()):_container(container),function(func){
-
-    }//Init List
 class iterator{
 public:
 
-    typename T::iterator iter;  //Data Member
+    typename T::iterator iter;  
     decltype(*(_container.begin())) _data;
     int count;
     Func function;
 
+	//init list
+    explicit iterator(typename T::iterator _iter,Func func):iter(_iter),_data(*iter),count(0),function(func) {}    
 
-    explicit iterator(typename T::iterator _iter,Func func):iter(_iter),_data(*iter),count(0),function(func) {
-
-    }    //Constructor
-
-    bool operator !=(const iterator& other){
+    bool operator !=(const iterator& other){	//different than end
         return other.iter != iter;
     }
 
-    auto operator *(){
+    auto operator *(){		//derefrencing the value
 
 
-        if(count ==0) {
+        if(count ==0) {		//for the first value
             count++;
             return *iter;
         }
@@ -57,14 +54,14 @@ public:
 
     }
 
-    iterator& operator ++() {
+    iterator& operator ++() {		//moving iterator
         ++iter;
         return *this;
     }
 
 };
 
-
+	//retrieve begin and end values for the iterator
     iterator begin(){return iterator(_container.begin(),function);
     }
 
