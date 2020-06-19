@@ -14,9 +14,8 @@
 #include "compress.hpp"
 
 
-
-using namespace std;
 using namespace itertools;
+using namespace std;
 
 
 struct lessThan3 {
@@ -26,8 +25,8 @@ struct lessThan3 {
 int main(int argc, const char * argv[]) {
     
     cout << "####  range:  ####";
-	for (int i: itertools::range(5,9))
-		cout << i << " ";      // 5 6 7 8
+	for (int i: range(5,9))
+		cout << i << " "<<endl;;      // 5 6 7 8
 
     vector<int> vecInt = {1,2,3,4};
     vector<string> vecString = {"Hello", "Bye", "Adam"};
@@ -35,26 +34,24 @@ int main(int argc, const char * argv[]) {
     
     cout << "####  accumulate:  ####";
     cout << endl << "accumulate of range: " << endl;
-	for (int i: itertools::accumulate(itertools::range(5,9)))
+	for (int i: accumulate(range(5,9)))
 		cout << i << " ";      // 5 11 18 26
 
     cout << endl << "accumulate of vector<string>: " << endl;
-    for (auto i: itertools::accumulate(vecString) )
+    for (auto i: accumulate(vecString) )
         cout << i << " ";  // Hello HelloBye HelloByeAdam
     cout << endl << endl;
-auto lambda =[](int x, int y){return x*y;};
+
     cout << endl << "accumulate of range with binary operator: " << endl;
-	for (int i: itertools::accumulate(range(5,9),lambda))
+	for (int i: accumulate(range(5,9), [](int x, int y){return x*y;}))
 		cout << i << " ";      // 5 30 210 1680
-
-
 
     cout << "####  Filter False:  ####";
     cout << endl << "Filter out all numbers less than 3 in vector{1,2,3,4}: " << endl;
-    for (auto i: filterfalse(lambda, vecInt) )
+    for (auto i: filterfalse(lessThan3{}, vecInt) )
         cout << i << " ";   // 3 4
     cout << endl << "Filter out all even numbers in range(5,9): " << endl;
-    for (auto i: filterfalse(lambda,itertools:: range(5,9)) )
+    for (auto i: filterfalse([](int i){return i%2==0;}, range(5,9)) )
         cout << i << " ";   // 5 7
     cout << endl << endl;
 
@@ -63,9 +60,11 @@ auto lambda =[](int x, int y){return x*y;};
     for (auto i: compress(string("abcd"), vector<bool>({true,true,false,true})) )
         cout << i << " ";  // a b d
     cout << endl << "compress a range" << endl;
-    for (auto i: compress(itertools::range(5,9), vector<bool>({true,true,false,true})) )
+    for (auto i: compress(range(5,9), vector<bool>({true,true,false,true})) )
         cout << i << " ";  // 5 6 8
     cout << endl << endl;
 
-}
 
+    cout << endl;
+    return 0;
+}
