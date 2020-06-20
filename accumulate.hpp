@@ -8,7 +8,7 @@
 using namespace std;
 namespace itertools{
 
-typedef struct{		//plus function
+typedef class{		//plus function
         template <typename T>
         T operator ()(T a, T b) const{
             return a+b;
@@ -43,13 +43,6 @@ public:
 
     auto operator *(){		//derefrencing the value
 
-
-        if(count ==0) {		//for the first value
-            count++;
-            return *iter;
-        }
-
-        _data = function(_data , *iter);
         return _data;
 
     }

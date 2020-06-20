@@ -19,11 +19,7 @@ namespace itertools {
         public:
 		//init list
             explicit iterator(typename container1::iterator it, typename container1::iterator end, typename container2::iterator _bool)
-                    : _iter(it), _it_end(end), _bool_it(_bool) {
-                while (_iter != _it_end && !(*_bool_it)) {
-                    ++_iter;
-                    ++_bool_it;
-                }
+                    : _iter(it), _it_end(end), _bool_it(_bool) {}
             };
 		//default constructor
             iterator(const iterator& other) = default;

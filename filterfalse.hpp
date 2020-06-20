@@ -50,15 +50,10 @@ namespace itertools{
 				//retrieve start and end of iterator
             iterator begin(){
                 return iterator(_container.begin(),function);
-
             }
-
             iterator end(){
                 return iterator(_container.end(),function);
-
             }
-
-
     };
 }
 #endif
